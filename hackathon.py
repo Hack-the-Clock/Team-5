@@ -1434,8 +1434,8 @@ if __name__ == "__main__":
 
     report_results(user_prompt, generated_code, eval_results, improvement_history)
 
-    print("\nGenerating documentation...")
-    documentation = generate_documentation(user_prompt, generated_code, eval_results, improvement_history)
+    # print("\nGenerating documentation...")
+    # documentation = generate_documentation(user_prompt, generated_code, eval_results, improvement_history)
 
     save = input("\nSave results? (y/n): ").strip().lower()
     if save == 'y':
@@ -1449,8 +1449,8 @@ if __name__ == "__main__":
         print(f"Code saved to {code_filename}")
 
         # Save documentation
-        doc_filename = input("Enter documentation filename (default: PROJECT_DOCUMENTATION.md): ").strip() or "PROJECT_DOCUMENTATION.md"
-        with open(doc_filename, 'w') as f:
-            f.write(documentation)
-        print(f"Documentation saved to {doc_filename}")
+        # doc_filename = input("Enter documentation filename (default: PROJECT_DOCUMENTATION.md): ").strip() or "PROJECT_DOCUMENTATION.md"
+        # with open(doc_filename, 'w') as f:
+        #     f.write(documentation)
+        # print(f"Documentation saved to {doc_filename}")
 
