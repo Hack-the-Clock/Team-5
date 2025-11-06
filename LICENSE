@@ -1,0 +1,86 @@
+MIT License
+
+Copyright (c) 2025 AI Code Quality Evaluator - Track 3 Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+THIRD-PARTY LICENSES AND ATTRIBUTIONS:
+
+This project uses the following third-party libraries and services:
+
+1. Flask (BSD-3-Clause License)
+   - Copyright © 2010 by the Pallets team
+   - https://flask.palletsprojects.com
+
+2. Flask-CORS (MIT License)
+   - Copyright © 2013 Cory Dolphin
+   - https://flask-cors.readthedocs.io
+
+3. Groq API (Commercial Service)
+   - AI code generation service
+   - https://groq.com
+
+4. Radon (MIT License)
+   - Code metrics tool
+   - Copyright © 2012-2020 Michele Lacchia
+   - https://radon.readthedocs.io
+
+5. Bandit (Apache License 2.0)
+   - Security linter for Python
+   - Copyright © 2014 Hewlett-Packard Development Company, L.P.
+   - https://bandit.readthedocs.io
+
+6. Pyodide (Mozilla Public License 2.0)
+   - Python runtime for WebAssembly
+   - Copyright © 2018 Mozilla Foundation
+   - https://pyodide.org
+
+7. Google Fonts - Inter & JetBrains Mono (SIL Open Font License 1.1)
+   - https://fonts.google.com
+
+8. python-dotenv (BSD-3-Clause License)
+   - Copyright © 2014 Saurabh Kumar
+   - https://github.com/theskumar/python-dotenv
+
+METHODOLOGIES AND ACADEMIC REFERENCES:
+
+1. Cyclomatic Complexity
+   - McCabe, T. J. (1976). "A Complexity Measure"
+   - IEEE Transactions on Software Engineering
+
+2. Halstead Complexity Metrics
+   - Halstead, M. H. (1977). "Elements of Software Science"
+   - Elsevier North-Holland
+
+3. Maintainability Index
+   - Oman, P., & Hagemeister, J. (1992)
+   - "Metrics for Assessing a Software System's Maintainability"
+   - Microsoft Visual Studio ranges: https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-maintainability-index-range-and-meaning
+
+4. SOLID Principles
+   - Martin, R. C. (2000). "Design Principles and Design Patterns"
+   - Object Mentor
+
+5. Dynamic Code Analysis
+   - Checkpoint Research (2024)
+   - https://www.checkpoint.com/cyber-hub/cloud-security/what-is-dynamic-code-analysis/
+
+For complete attribution details, see CREDITS.md in the project repository.

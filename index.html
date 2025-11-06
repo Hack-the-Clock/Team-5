@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Code Quality Evaluator - Production Readiness Assessment</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts: Inter & JetBrains Mono (SIL Open Font License 1.1) via Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <div class="header-content">
+  
+            <h1 class="app-title">AI Code Quality Evaluator</h1>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro-card">
+      <h2>Track 3</h2>
+      <p class="intro-description">
+        This tool evaluates AI-generated code for production readiness by assessing modularity, 
+        maintainability, security, test coverage, and adherence to software engineering best practices.
+      </p>
+    </section>
+
+
+    <section class="input-section">
+      <div class="section-header">
+        <h2> Code Input</h2>
+        <div class="input-mode-toggle">
+          <button class="toggle-btn active" data-mode="paste">Paste Code</button>
+          <button class="toggle-btn" data-mode="generate">Generate from Prompt</button>
+        </div>
+      </div>
+
+
+      <div id="pasteMode" class="input-mode active">
+        <label for="codeInput" class="input-label">Paste Python code to evaluate</label>
+        <textarea 
+          id="codeInput" 
+          class="code-textarea" 
+          placeholder="# Paste your Python code here for quality evaluation...&#10;&#10;def example():&#10;    pass"
+          rows="12"
+        ></textarea>
+      </div>
+
+      <div id="generateMode" class="input-mode">
+        <label for="promptInput" class="input-label">Describe what you want to build (Python)</label>
+        <textarea 
+          id="promptInput" 
+          class="prompt-textarea" 
+          placeholder="Example: Create a REST API for managing user authentication with JWT tokens, including registration, login, and password reset functionality."
+          rows="6"
+        ></textarea>
+        
+        <div class="backend-status" id="backendStatus">
+          <div class="status-indicator checking">
+            <span class="status-dot"></span>
+            <span class="status-text">Checking backend connection...</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-bar">
+        <button id="analyzeBtn" class="btn-primary">
+          <span class="btn-icon"></span>
+          Evaluate Code Quality
+        </button>
+        <button id="loadExampleBtn" class="btn-secondary">
+          <span class="btn-icon"> </span>
+          Load Example
+        </button>
+      </div>
+    </section>
+
+    <div id="loadingState" class="loading-state hidden">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Analyzing code quality and production readiness...</p>
+      <p class="loading-subtext">Evaluating syntax, security, maintainability, and best practices</p>
+    </div>
+
+    <section id="resultsSection" class="results-section hidden">
+      <div class="score-card">
+        <h2> Production Readiness Score</h2>
+        <div class="score-display">
+          <div class="score-circle">
+            <svg class="score-ring" viewBox="0 0 120 120">
+              <circle class="score-ring-background" cx="60" cy="60" r="54"></circle>
+              <circle class="score-ring-progress" cx="60" cy="60" r="54" id="scoreRing"></circle>
+            </svg>
+            <div class="score-content">
+              <div class="score-value" id="scoreValue">0</div>
+              <div class="score-max">/100</div>
+            </div>
+          </div>
+          <div class="score-details">
+            <div class="score-rating" id="scoreRating">Not Evaluated</div>
+            <div class="score-percentage" id="scorePercentage">0%</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="breakdown-card">
+        <h3>Quality Metrics Breakdown</h3>
+        <div id="scoreBreakdown" class="breakdown-grid">
+        </div>
+      </div>
+
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3> Basic Metrics</h3>
+          <div id="basicMetrics" class="metric-list">
+          </div>
+        </div>
+
+
+        <div class="metric-card">
+          <h3> Security Analysis</h3>
+          <div id="securityMetrics" class="metric-list">
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <h3>Error Handling</h3>
+          <div id="errorHandlingMetrics" class="metric-list">
+          </div>
+        </div>
+        <div class="metric-card">
+          <h3> Test Coverage</h3>
+          <div id="testMetrics" class="metric-list">
+          </div>
+        </div>
+        <div class="metric-card">
+          <h3> Maintainability</h3>
+          <div id="maintainabilityMetrics" class="metric-list">
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <h3> SOLID Principles</h3>
+          <div id="solidMetrics" class="metric-list">
+          </div>
+        </div>
+      </div>
+
+      <div class="recommendations-card">
+        <h3>AI-Generated Recommendations</h3>
+        <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.95rem;">
+          Based on comprehensive code analysis including syntax, security, maintainability, and test coverage metrics.
+        </p>
+        <div id="recommendationsList" class="recommendations-list">
+        </div>
+      </div>
+      <div class="code-display-card">
+        <div class="code-display-header">
+          <h3>Evaluated Code</h3>
+          <div class="code-display-actions">
+            <button id="improveCodeBtn" class="btn-secondary" style="margin-right: 8px;" title="Apply AI-powered iterative improvements based on recommendations">
+              <span style="margin-right: 4px;"></span> Auto-Improve Code
+            </button>
+            <button id="copyCodeBtn" class="btn-icon-only" title="Copy code">
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+        <pre id="evaluatedCode" class="code-display"><code></code></pre>
+        <div id="improvementProgress" class="improvement-progress hidden">
+          <div class="progress-header">
+            <span class="progress-icon">⚡</span>
+            <span class="progress-text">Applying iterative improvements...</span>
+          </div>
+          <div class="progress-details">
+            <span id="improvementIteration">Iteration 1/3</span>
+            <span id="improvementScore">Score: 0 → 0</span>
+          </div>
+        </div>
+        <div id="improvementResults" class="improvement-results hidden">
+          <h4>Improvement Summary</h4>
+          <div class="improvement-comparison">
+            <div class="score-comparison">
+              <div class="score-item">
+                <span class="score-label">Original Score</span>
+                <span class="score-value" id="originalScoreValue">0</span>
+              </div>
+              <span class="score-arrow">→</span>
+              <div class="score-item">
+                <span class="score-label">Improved Score</span>
+                <span class="score-value improved" id="improvedScoreValue">0</span>
+              </div>
+              <div class="score-item">
+                <span class="score-label">Gain</span>
+                <span class="score-value gain" id="scoreGainValue">+0</span>
+              </div>
+            </div>
+            <div class="iterations-info">
+              <span id="iterationsPerformed">0 iterations performed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      <p>
+        <strong>Hack the Clock Hackathon Submission</strong> 
+    </div>
+  </footer>
+
+  <!-- Pyodide: Python runtime for WebAssembly (MPL 2.0) - https://pyodide.org -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
