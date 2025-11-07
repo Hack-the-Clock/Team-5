@@ -21,8 +21,7 @@ python3 api.py & python3 -m http.server 8080
 Alternatively:
 
 If the website doesn't load, you can just do:python3 hackathon.py  as well
-
-
+Video explanation for the code: https://gmuedu-my.sharepoint.com/:v:/g/personal/j20_gmu_edu/EWuDH8LNLkpElRDXtpYkp_EBvv8Wy8Bnz9tGo2Nq9mGz-g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=HXnGVX
 
 # Credits and Attributions
 
